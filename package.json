@@ -1,0 +1,45 @@
+{
+  "name": "koa-boilerplate-cli",
+  "version": "0.1.0",
+  "description": "CLI for generating a new API project with KoaJs web framework",
+  "main": "src/cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "bin": {
+    "@quantran/koa-boilerplate-cli": "bin/create-project.js",
+    "koa-boilerplate-cli": "bin/create-project.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quantran1229/koa-boilerplate-cli.git"
+  },
+  "keywords": [
+    "koa",
+    "sequelize",
+    "cli",
+    "project",
+    "generator",
+    "backend",
+    "nodejs",
+    "javascript",
+    "bootstrap"
+  ],
+  "author": "Quan Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quantran1229/koa-boilerplate-cli/issues"
+  },
+  "homepage": "https://github.com/quantran1229/koa-boilerplate-cli#readme",
+  "dependencies": {
+    "arg": "^5.0.2",
+    "del": "^7.0.0",
+    "execa": "^6.1.0",
+    "inquirer": "^9.1.2",
+    "listr": "^0.14.3",
+    "make-dir": "^3.1.0",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0"
+  }
+}

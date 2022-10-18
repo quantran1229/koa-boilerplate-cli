@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  project-name:
+    image: project-name
+    build: .
+    container_name: project-name

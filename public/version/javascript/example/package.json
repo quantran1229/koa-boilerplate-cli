@@ -1,0 +1,45 @@
+{
+  "name": "koa-sequelize-js-template",
+  "version": "0.1.0",
+  "description": "A brief description of what this project does and who it's for",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "db:start": "docker-compose -f ./src/database/docker-compose.yaml up -d",
+    "db:stop": "docker-compose -f ./src/database/docker-compose.yaml down",
+    "start": "nodemon"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.4.1",
+    "bcrypt": "^5.0.1",
+    "cron": "^2.1.0",
+    "dayjs": "^1.11.5",
+    "dotenv": "^16.0.3",
+    "glob": "^7.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compose": "^4.1.0",
+    "koa-helmet": "^6.1.0",
+    "koa-morgan": "^1.0.1",
+    "koa-router": "^12.0.0",
+    "node-cache": "^5.1.2",
+    "parameter": "^3.6.0",
+    "pg": "^8.8.0",
+    "sequelize": "^6.23.2",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.19.1",
+    "@babel/plugin-transform-runtime": "^7.19.1",
+    "@babel/preset-env": "^7.19.3",
+    "@babel/cli": "7.19.3",
+    "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=12.0.0"
+  }
+}

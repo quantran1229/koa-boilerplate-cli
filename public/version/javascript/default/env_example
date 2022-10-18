@@ -1,0 +1,18 @@
+APP_PORT=3000
+APP_HOST=0.0.0.0
+STAGE=local
+
+# Log path
+LOGS_PATH = ./logs
+
+HEALTH_CHECK_KEY=123456a@
+
+# This save on docker-compose.yaml on Prod
+# DB connection
+DATABASE_DIALECT=postgres
+DATABASE_NAME=db
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=123456a@
+DATABASE_LOGGING=true
