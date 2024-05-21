@@ -5,7 +5,7 @@ import Constant from '../constants';
 import Logger from '../utils/logger';
 
 const basename = path.basename(__filename);
-const dbConfig = Constant.instance.DATABASE_CONFIG;
+const dbConfig = Constant.DATABASE_CONFIG;
 const db = {};
 
 // Initial database

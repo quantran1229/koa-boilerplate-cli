@@ -24,9 +24,9 @@ export default class UserController {
             if (!user) {
                 res.setError(
                     'User not found or bad password',
-                    Constant.instance.HTTP_CODE.BadRequest,
+                    Constant.HTTP_CODE.BadRequest,
                     null,
-                    Constant.instance.ERROR_CODE.USER_NOT_FOUND_OR_BAD_PASSWORD,
+                    Constant.ERROR_CODE.USER_NOT_FOUND_OR_BAD_PASSWORD,
                 );
 
                 return res.send(ctx);
@@ -36,9 +36,9 @@ export default class UserController {
             if (user.status == User.STATUS.INACTIVE) {
                 res.setError(
                     'User is inactive',
-                    Constant.instance.HTTP_CODE.BadRequest,
+                    Constant.HTTP_CODE.BadRequest,
                     null,
-                    Constant.instance.ERROR_CODE.USER_IS_INACTIVE,
+                    Constant.ERROR_CODE.USER_IS_INACTIVE,
                 );
 
                 return res.send(ctx);
@@ -49,9 +49,9 @@ export default class UserController {
             if (!check) {
                 res.setError(
                     'User not found or bad password',
-                    Constant.instance.HTTP_CODE.BadRequest,
+                    Constant.HTTP_CODE.BadRequest,
                     null,
-                    Constant.instance.ERROR_CODE.USER_NOT_FOUND_OR_BAD_PASSWORD,
+                    Constant.ERROR_CODE.USER_NOT_FOUND_OR_BAD_PASSWORD,
                 );
 
                 return res.send(ctx);
@@ -82,9 +82,9 @@ export default class UserController {
             );
             res.setError(
                 `Error`,
-                Constant.instance.HTTP_CODE.InternalError,
+                Constant.HTTP_CODE.InternalError,
                 null,
-                Constant.instance.ERROR_CODE.SERVER_ERROR,
+                Constant.ERROR_CODE.SERVER_ERROR,
             );
 
             return res.send(ctx);
@@ -96,7 +96,7 @@ export default class UserController {
         try {
             let condition = {};
             const result = await userService.findAll(condition);
-            res.setSuccess(result, Constant.instance.HTTP_CODE.Success);
+            res.setSuccess(result, Constant.HTTP_CODE.Success);
 
             return res.send(ctx);
         } catch (e) {
@@ -110,9 +110,9 @@ export default class UserController {
             );
             res.setError(
                 `Error`,
-                Constant.instance.HTTP_CODE.InternalError,
+                Constant.HTTP_CODE.InternalError,
                 null,
-                Constant.instance.ERROR_CODE.SERVER_ERROR,
+                Constant.ERROR_CODE.SERVER_ERROR,
             );
             return res.send(ctx);
         }
@@ -130,10 +130,10 @@ export default class UserController {
             if (checkDuplicate) {
                 res.setError(
                     `Duplicated`,
-                    Constant.instance.HTTP_CODE.Conflict, {
+                    Constant.HTTP_CODE.Conflict, {
                         field: 'email',
                     },
-                    Constant.instance.ERROR_CODE.USERNAME_IS_DUPLICATED,
+                    Constant.ERROR_CODE.USERNAME_IS_DUPLICATED,
                 );
 
                 return res.send(ctx);
@@ -149,7 +149,7 @@ export default class UserController {
             // Remove password
             delete user.password;
             delete user.dataValues.password;
-            res.setSuccess(user, Constant.instance.HTTP_CODE.Created);
+            res.setSuccess(user, Constant.HTTP_CODE.Created);
 
             return res.send(ctx);
         } catch (e) {
@@ -163,9 +163,9 @@ export default class UserController {
             );
             res.setError(
                 `Error`,
-                Constant.instance.HTTP_CODE.InternalError,
+                Constant.HTTP_CODE.InternalError,
                 null,
-                Constant.instance.ERROR_CODE.SERVER_ERROR,
+                Constant.ERROR_CODE.SERVER_ERROR,
             );
 
             return res.send(ctx);
@@ -180,14 +180,14 @@ export default class UserController {
             const user = await userService.findOne(id);
             // Check if user exist
             if (!user) {
-                res.setError('Not found', Constant.instance.HTTP_CODE.NotFound, null, Constant.instance.ERROR_CODE.USER_NOT_FOUND);
+                res.setError('Not found', Constant.HTTP_CODE.NotFound, null, Constant.ERROR_CODE.USER_NOT_FOUND);
 
                 return res.send(ctx);
             }
 
             // Remove user
             await userService.delete(user.id);
-            res.setSuccess(null, Constant.instance.HTTP_CODE.SuccessNoContent);
+            res.setSuccess(null, Constant.HTTP_CODE.SuccessNoContent);
 
             return res.send(ctx);
         } catch (e) {
@@ -201,9 +201,9 @@ export default class UserController {
             );
             res.setError(
                 `Error`,
-                Constant.instance.HTTP_CODE.InternalError,
+                Constant.HTTP_CODE.InternalError,
                 null,
-                Constant.instance.ERROR_CODE.SERVER_ERROR,
+                Constant.ERROR_CODE.SERVER_ERROR,
             );
 
             return res.send(ctx);

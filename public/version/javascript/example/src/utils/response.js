@@ -9,8 +9,8 @@ export default class Response {
   setSuccess(data, statusCode, msg, code) {
     this.statusCode = statusCode
       ? statusCode
-      : Constant.instance.HTTP_CODE.Success;
-    if (this.statusCode == Constant.instance.HTTP_CODE.SuccessNoContent) {
+      : Constant.HTTP_CODE.Success;
+    if (this.statusCode == Constant.HTTP_CODE.SuccessNoContent) {
       return;
     }
     this.content = {
@@ -24,7 +24,7 @@ export default class Response {
   setError(msg, statusCode, data, code) {
     this.statusCode = statusCode
       ? statusCode
-      : Constant.instance.HTTP_CODE.InternalError;
+      : Constant.HTTP_CODE.InternalError;
     this.content = {
       statusCode: this.statusCode,
       data,
@@ -35,7 +35,7 @@ export default class Response {
 
   send(ctx) {
     ctx.status = this.statusCode;
-    if (ctx.status !== Constant.instance.HTTP_CODE.SuccessNoContent) {
+    if (ctx.status !== Constant.HTTP_CODE.SuccessNoContent) {
       ctx.body = this.content;
     }
     return;

@@ -23,7 +23,7 @@ export default async (ctx, next) => {
     if (!token || token === '') {
       res.setError(
         'Unauthenticated',
-        Constant.instance.HTTP_CODE.Unauthenticated,
+        Constant.HTTP_CODE.Unauthenticated,
       );
 
       return res.send(ctx);
@@ -34,7 +34,7 @@ export default async (ctx, next) => {
     //   ctx.state.user = cacheService.get(`jwt-${token}`);
     // } else {
     //   try {
-    //     const a = verify(token, Constant.instance.PRIVATE_KEY);
+    //     const a = verify(token, Constant.PRIVATE_KEY);
     //     const user = await userService.findOne(a['id']);
     //     if (!user) throw new Error('Not found');
     //     const saveUser = {
@@ -51,7 +51,7 @@ export default async (ctx, next) => {
     //   } catch (e) {
     //     res.setError(
     //       'Unauthenticated',
-    //       Constant.instance.HTTP_CODE.Unauthenticated,
+    //       Constant.HTTP_CODE.Unauthenticated,
     //     );
 
     //     return res.send(ctx);
@@ -60,14 +60,14 @@ export default async (ctx, next) => {
 
     // Default way.
     try {
-      const a = verify(token, Constant.instance.PRIVATE_KEY);
+      const a = verify(token, Constant.PRIVATE_KEY);
       ctx.state.user = {
         id: a['id']
       };
     } catch (e) {
       res.setError(
         'Unauthenticated',
-        Constant.instance.HTTP_CODE.Unauthenticated,
+        Constant.HTTP_CODE.Unauthenticated,
       );
 
       return res.send(ctx);
@@ -85,9 +85,9 @@ export default async (ctx, next) => {
     );
     res.setError(
       `Error`,
-      Constant.instance.HTTP_CODE.InternalError,
+      Constant.HTTP_CODE.InternalError,
       null,
-      Constant.instance.ERROR_CODE.SERVER_ERROR,
+      Constant.ERROR_CODE.SERVER_ERROR,
     );
 
     return res.send(ctx);

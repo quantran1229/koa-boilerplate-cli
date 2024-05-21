@@ -23,6 +23,13 @@ const logLevels = {
 };
 winston.addColors(logLevels.colors);
 
+const timezoneFormat = () => {
+  return format((info) => {
+    info.timestamp = dayjs().format('YYYY-MM-DD HH:mm:ss Z[Z]');
+    return info;
+  })();
+};
+
 const myFormat = printf(({level, message, label, timestamp}) => {
   return `${timestamp} [${level}]: ${message}`;
 });
@@ -30,7 +37,7 @@ const myFormat = printf(({level, message, label, timestamp}) => {
 const logger = winston.createLogger({
   levels: logLevels.levels,
   format: combine(
-    timestamp(),
+    timezoneFormat(),
     myFormat,
     align(),
     splat(),
@@ -42,13 +49,11 @@ const logger = winston.createLogger({
     // - Write all logs with level `info` and below to `combined.log`
     //
     new winston.transports.File({
-      filename: `${Constant.instance.LOGS_PATH}/error-${dayjs().format(
-        'DDMMYYYY',
-      )}.log`,
+      filename: `${Constant.LOGS_PATH}/error-${dayjs().format('DDMMYYYY')}.log`,
       level: 'error',
     }),
     new winston.transports.File({
-      filename: `${Constant.instance.LOGS_PATH}/combined-${dayjs().format(
+      filename: `${Constant.LOGS_PATH}/combined-${dayjs().format(
         'DDMMYYYY',
       )}.log`,
       level: 'info',
@@ -66,7 +71,7 @@ function filterOnly(level) {
   })();
 }
 
-if (Constant.instance.STAGE !== 'production') {
+if (Constant.STAGE !== 'production') {
   for (const i of Object.keys(logLevels.levels)) {
     logger.add(
       new winston.transports.Console({

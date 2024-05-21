@@ -13,10 +13,10 @@ export function paging(query) {
   }
   const page = query['page']
     ? parseInt(query['page'].toString(), 10)
-    : Constant.instance.DEFAULT_PAGE_NUMBER;
+    : Constant.DEFAULT_PAGE_NUMBER;
   const limit = query['limit']
     ? parseInt(query['limit'].toString(), 10)
-    : Constant.instance.DEFAULT_LIMIT_PER_PAGE;
+    : Constant.DEFAULT_LIMIT_PER_PAGE;
   pager.limit = limit;
   pager.offset = (page - 1) * limit;
   return pager;

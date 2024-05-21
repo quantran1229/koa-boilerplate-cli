@@ -19,14 +19,14 @@ export default class UserService {
 
     // Hash plain password to save to DB
     hashPassword = (password) => {
-        const saltRounds = Constant.instance.DEFAULT_SALT_ROUND;
+        const saltRounds = Constant.DEFAULT_SALT_ROUND;
 
         return bcrypt.hashSync(password, saltRounds);
     };
 
     // Generate Token with info
     generateToken = async (info) => {
-        const token = sign(info, Constant.instance.PRIVATE_KEY, {
+        const token = sign(info, Constant.PRIVATE_KEY, {
             algorithm: 'HS256',
             expiresIn: '1d',
         });

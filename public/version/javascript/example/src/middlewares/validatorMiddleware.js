@@ -19,7 +19,7 @@ export default function (rule, options) {
         if (error && error.length > 0) {
           res.setError(
             `Bad request`,
-            Constant.instance.HTTP_CODE.BadRequest,
+            Constant.HTTP_CODE.BadRequest,
             error,
           );
           return res.send(ctx);
@@ -31,7 +31,7 @@ export default function (rule, options) {
         if (error && error.length > 0) {
           res.setError(
             `Bad request`,
-            Constant.instance.HTTP_CODE.BadRequest,
+            Constant.HTTP_CODE.BadRequest,
             error,
           );
           return res.send(ctx);
@@ -43,7 +43,7 @@ export default function (rule, options) {
         if (error && error.length > 0) {
           res.setError(
             `Bad request`,
-            Constant.instance.HTTP_CODE.BadRequest,
+            Constant.HTTP_CODE.BadRequest,
             error,
           );
           return res.send(ctx);
@@ -55,9 +55,9 @@ export default function (rule, options) {
       Logger.error('validate ' + e.message + ' ' + e.stack);
       res.setError(
         `Error`,
-        Constant.instance.HTTP_CODE.InternalError,
+        Constant.HTTP_CODE.InternalError,
         null,
-        Constant.instance.ERROR_CODE.SERVER_ERROR,
+        Constant.ERROR_CODE.SERVER_ERROR,
       );
       return res.send(ctx);
     }

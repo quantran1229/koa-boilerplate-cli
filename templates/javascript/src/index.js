@@ -10,7 +10,6 @@ import {routerLog} from './middlewares';
 import Logger from './utils/logger';
 
 import Response from './utils/response';
-
 import Constant from './constants';
 
 // Constant
@@ -23,10 +22,7 @@ app
   .use(
     bodyParser({
       onerror: (err, ctx) => {
-        res.setError(
-          'Body parse error',
-          Constant.instance.HTTP_CODE.BodyParseError,
-        );
+        res.setError('Body parse error', Constant.HTTP_CODE.BodyParseError);
         return res.send(ctx);
       },
     }),
@@ -35,12 +31,10 @@ app
   .use(routers);
 
 const server = app.listen(
-  Constant.instance.APP_PORT,
-  Constant.instance.APP_HOST, // Host default localhost
+  Constant.APP_PORT,
+  Constant.APP_HOST, // Host default localhost
   () => {
-    Logger.info(
-      `App run on ${Constant.instance.APP_HOST}:${Constant.instance.APP_PORT}`,
-    );
+    Logger.info(`App run on ${Constant.APP_HOST}:${Constant.APP_PORT}`);
   },
 );
 

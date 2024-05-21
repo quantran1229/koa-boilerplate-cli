@@ -10,4 +10,9 @@ logger.info('Cronjobs started!');
 //   await diamondSerialService.validateAllDiamondSerials({});
 // });
 
-// cronJob.start();
+const cronList = [];
+console.log('START CRON. Total cron:', cronList.length);
+cronList.forEach((cron) => {
+  console.log('Next start', cron.nextDate().toISOTime());
+  cron.start();
+});
